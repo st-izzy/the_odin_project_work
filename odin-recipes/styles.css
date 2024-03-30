@@ -10,6 +10,10 @@ div {
     border: 1px solid green
 }
 
+.photo {
+    border: unset;
+}
+
 .recipe_list {
     font-size: 23px;
 }
