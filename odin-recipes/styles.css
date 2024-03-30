@@ -1,8 +1,21 @@
 body {
     background: rgb(187, 214, 187);
     font-family: Helvetica, Arial, sans-serif;
-    text-align: center;
-    list-style-position: inside;
+}
+
+div {
+    margin: 0 auto;
+    width: 400px;
+    padding: 10px;
+    border: 1px solid green
+}
+
+.recipe_list {
+    font-size: 23px;
+}
+
+footer {
+    padding: 10px;
 }
 
 /* I think I need to learn about divs and flex before I can really style this project properly. */
