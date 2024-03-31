@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page Project</title>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -14,13 +15,13 @@
         <div class="logo">Header Logo</div>
 
         <ul class="links">
-            <li>header link one</li>
-            <li>header link two</li>
-            <li>header link three</li>
+            <li><a href="#hero">header link one</a></li>
+            <li><a href="#information">header link two</a></li>
+            <li><a href="#quote">header link three</a></li>
         </ul>
     </div>
 
-    <div class="hero">
+    <div class="hero" id="hero">
 
         <div class="hero_text">
             <div class="main_title">
@@ -30,14 +31,16 @@
                 This website has some subtext that goes here under the main title.
                 It's a smaller font and the color is lower contrast.
             </div>
+
             <button class="button_hero">Sign up</button>
+            
         </div>
         
         <img src="./placeholder.png" alt="placeholder image">
 
     </div>
 
-    <div class="information">
+    <div class="information" id="information">
 
         <div class="info_title">
             Some random information.
@@ -67,7 +70,7 @@
 
     </div>
 
-    <div class="quote">
+    <div class="quote" id="quote">
         
         <div class="quote_text">
             This is an inspiring quote, or a testimonial from a
@@ -89,7 +92,9 @@
             <div class="action_subtext">Sign up for our product by clicking that button right over there!</div>
         </div>
 
-        <button class="button_action">Sign up</button>
+        <a href="https://github.com/st-izzy/the_odin_project_work" target="_blank" rel="noopener noreferrer">
+            <button class="button_action">Sign up</button>
+        </a>
 
     </div>
 

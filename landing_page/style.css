@@ -1,6 +1,11 @@
 body {
     padding: 0;
     margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+div {
+    cursor: default;
 }
 
 .header {
@@ -26,6 +31,11 @@ body {
     gap: 24px;
 }
 
+a {
+    text-decoration: none;
+    color: #E5E7EB;
+}
+
 .hero {
     background: #1F2937;
     display: flex;
@@ -49,11 +59,103 @@ body {
 }
 
 button {
+    cursor: pointer;
     background: #3882F6;
     color: white;
     font-size: 16px;
     font-weight: 700;
-    padding: 12px 38px;
+    padding: 12px 42px;
     border-radius: 8px;
     border: 0;
+}
+
+.information {
+    padding: 48px 13%;
+    padding-bottom: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+}
+
+.info_title {
+    color: #1F2937;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.deck {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+}
+
+.card {
+    max-width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    text-align: center;
+}
+
+.stamp {
+    height: 150px;
+    width: 150px;
+    border: 5px solid #3882F6;
+    border-radius: 25px;
+}
+
+.quote {
+    background: #E5E7EB;
+    padding: 96px 20%;
+}
+
+.quote_text {
+    color: #1F2937;
+    font-size: 36px;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.quote_author {
+    color: #1F2937;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: right;
+    padding: 0px 16px;
+}
+
+.action {
+    background: #3882F6;
+    margin: 64px 13%;
+    padding: 48px 7%;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.action_title {
+    color: #F9FAF8;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.action_subtext {
+    color: #E5E7EB
+}
+
+.button_action {
+    border: 2px solid white;
+}
+
+.footer {
+    background: #1F2937;
+    text-align: center;
+    padding: 32px;
+
+    color: #E5E7EB;
+    font-size: 18px;
 }
