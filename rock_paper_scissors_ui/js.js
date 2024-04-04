@@ -7,6 +7,7 @@ let scoreTitleContent = "SCORE"
 let resultCard = symbols[1];
 let scoreComputer = 0;
 let scorePlayer = 0;
+let scoreResult = "LOSE";
 let roundNumber = 0;
 let easyMode = false;
 
@@ -41,6 +42,15 @@ const gameStart = function() {
     signBoard.style.display = "none";
 };
 
+// refresh boards
+const gameRefresh = function() {
+    scoreTitle.textContent = scoreTitleContent;
+    scoreLine.textContent = scorePlayer + " -- " + scoreComputer;
+    roundCount.textContent = "ROUND " + roundNumber;
+    signLine.textContent = playedPlayer + " -- " + playedComputer;
+    resultLine.textContent = resultCard;
+};
+
 // reset state
 const gameReset = function() {
     resetButton.textContent = "Reset";
@@ -48,22 +58,18 @@ const gameReset = function() {
     playBoard.style.display = "flex";
     signBoard.style.display = "flex";
 
-    scoreTitle.textContent = scoreTitleContent;
-    scoreLine.textContent = scorePlayer + " -- " + scoreComputer;
-
-//    roundNumber = 1
-    roundCount.textContent = "ROUND " + roundNumber;
-    signLine.textContent = playedPlayer + " -- " + playedComputer;
-    resultLine.textContent = resultCard;
+    gameRefresh()
 };
 
-// refresh boards
-const gameRefresh = function() {
-    scoreLine.textContent = scorePlayer + " -- " + scoreComputer;
-    roundCount.textContent = "ROUND " + roundNumber;
-    signLine.textContent = playedPlayer + " -- " + playedComputer;
-    resultLine.textContent = resultCard;
-};
+// finish state
+const gameFinish = function() {
+    resetButton.textContent = "Play Again"
+    playBoard.style.display = "none";
+    signBoard.style.display = "none";
+
+    scoreTitleContent = "🎆🎉🥳 You " + scoreResult + " 🥳🎉🎆"
+    gameRefresh();
+}
 
 // get computer sign
 const shootComputer = function() {
@@ -111,15 +117,35 @@ const winComputer = function() {
 };
 
 
-// hold results before refreshing
+// update round number and determine if the game is finished or continues
 const gameResult = function() {
     gameRefresh();
     roundNumber++;
-    gameReset();
+
+    if ( roundNumber === 6 ) {
+        if ( scorePlayer > scoreComputer ) {
+            scoreResult = "WIN"
+        } else if ( scorePlayer < scoreComputer ) {
+            scoreResult = "LOSE"
+        } else {
+            scoreResult = "DREW"
+        }
+        gameFinish();
+    } else {
+        gameReset();
+    }
 };
 
 // button behavior
 resetButton.addEventListener( "click", () => {
+    playedPlayer = symbols[0];
+    playedComputer = symbols[0];
+    scoreTitleContent = "SCORE"
+    resultCard = symbols[1];
+    scoreComputer = 0;
+    scorePlayer = 0;
+    roundNumber = 0;
+    easyMode = false;
     gameReset();
 });
 rockButton.addEventListener( "click", () => {
