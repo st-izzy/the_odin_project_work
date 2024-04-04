@@ -3,6 +3,7 @@ signs = ["🪨", "📃", "✂️"];
 symbols = ["❓", "🤔", "❌", "✅", "🟰"];
 let playedPlayer = symbols[0];
 let playedComputer = symbols[0];
+let scoreTitleContent = "SCORE"
 let resultCard = symbols[1];
 let scoreComputer = 0;
 let scorePlayer = 0;
@@ -47,10 +48,10 @@ const gameReset = function() {
     playBoard.style.display = "flex";
     signBoard.style.display = "flex";
 
-    scoreTitle.textContent = "SCORE";
+    scoreTitle.textContent = scoreTitleContent;
     scoreLine.textContent = scorePlayer + " -- " + scoreComputer;
 
-    roundNumber = 1
+//    roundNumber = 1
     roundCount.textContent = "ROUND " + roundNumber;
     signLine.textContent = playedPlayer + " -- " + playedComputer;
     resultLine.textContent = resultCard;
@@ -89,14 +90,14 @@ const shootPlayer = function( signPlayer, signComputer ) {
 // player wins
 const winPlayer = function() {
     scorePlayer++;
-    scoreTitle.textContent =  "🎉 SCORE 🎉";
+    scoreTitleContent =  "🎉 SCORE 🎉";
     resultCard = symbols[3];
     gameResult()
 };
 
 // players draw
 const winDraw = function() {
-    scoreTitle.textContent = "🤔 SCORE 🤔";
+    scoreTitleContent = "🤔 SCORE 🤔";
     resultCard = symbols[4];
     gameResult()
 };
@@ -104,7 +105,7 @@ const winDraw = function() {
 // computer wins
 const winComputer = function() {
     scoreComputer++;
-    scoreTitle.textContent = "🤣 SCORE 🤣";
+    scoreTitleContent = "🤣 SCORE 🤣";
     resultCard = symbols[2];
     gameResult()
 };
@@ -114,7 +115,7 @@ const winComputer = function() {
 const gameResult = function() {
     gameRefresh();
     roundNumber++;
-    setTimeout( gameReset(), "2000" );
+    gameReset();
 };
 
 // button behavior
