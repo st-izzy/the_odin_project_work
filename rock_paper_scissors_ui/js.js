@@ -144,7 +144,7 @@ resetButton.addEventListener( "click", () => {
     resultCard = symbols[1];
     scoreComputer = 0;
     scorePlayer = 0;
-    roundNumber = 0;
+    roundNumber = 1;
     easyMode = false;
     gameReset();
 });
