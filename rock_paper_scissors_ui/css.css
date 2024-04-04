@@ -1,0 +1,29 @@
+.board {
+    margin: 32px 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#headLine {
+    font-size: 32px;
+}
+
+.title {
+    font-size: 24px;
+}
+
+#signLine {
+    font-size: 32px;
+}
+
+#sign {
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+}
+
+.signButton {
+    font-size: 48px;
+}
