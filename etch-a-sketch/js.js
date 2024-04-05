@@ -1,16 +1,35 @@
 // buttons and elements
 const display = document.getElementById("display");
-const colorButton = document.getElementById("color");
 const rainbowButton = document.getElementById("rainbow");
-const eraserButton = document.getElementById("erase");
 const resetButton = document.getElementById("reset");
 const sizeSlider = document.getElementById("sizeSlider");
 const sizeReadout = document.getElementById("sizeReadout");
+
+// button behavior
+// rainbow button
+let rainbowMode = false
+rainbowButton.addEventListener("click", () => {
+    if (rainbowMode == false) {
+        rainbowMode = true
+    } else {
+        rainbowMode = false
+    }
+    console.log("rainbow " + rainbowMode)
+})
+
+// reset button
+resetButton.addEventListener("click", () => {
+    console.log("resetButton");
+    clearGrid();
+    createGrid();
+})
 
 // slider readout
 sizeReadout.innerHTML = sizeSlider.value;
 sizeSlider.oninput = function () {
     sizeReadout.innerHTML = this.value;
+    clearGrid();
+    createGrid();
 }
 
 // create a grid in the display div
@@ -34,16 +53,27 @@ const createGrid = function() {
             newCell.id = i + " " + j;
             newCell.className = "cell";
             newCell.style.width = `${cellEdge}px`;
+            newCell.style.height= `${cellEdge}px`;
             row.appendChild(newCell);
 
             // add event listener for mouseover
             newCell.addEventListener("mouseover", () => {
-                newCell.style.backgroundColor = "black";
+                if (rainbowMode) {
+                    let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+                    newCell.style.backgroundColor = `#${randomColor}`;
+                } else {
+                    newCell.style.backgroundColor = "black";
+                }
             });
         }
     }
 }
 
-
+// clear grid
+const clearGrid = function() {
+    while (display.firstChild) {
+        display.removeChild(display.firstChild);
+    }
+}
 
 createGrid()
