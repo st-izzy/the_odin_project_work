@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-Sketch</title>
+    <link rel="stylesheet" href="./css.css">
+    <script src="./js.js" defer></script>
+    <!-- google cursive font -->
+    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="header" class="board">
+    <div id="headline">Etch A Sketch</div>
+    <div class="title">Hold click to draw.</div>
+</div>
+
+<div id="display" class="board"></div>
+
+<div id="settings" class="board">
+    <div id="buttonPanel" class="panel">
+        <button id="color" class="setting">Color</button>
+        <button id="rainbow" class="setting">Rainbow</button>
+        <button id="erase" class="setting">Eraser</button>
+        <button id="reset" class="setting">Reset</button>
+    </div>
+
+    <div id="sliderPanel" class="panel">
+        <input type="range" min="1" max="80" value="16" class="slider" id="sizeSlider">
+        <div id="sizeReadout">0</div>
+    </div>
+</div>
+
+<div id="footer" class="board"></div>
+
+</body>
+</html>

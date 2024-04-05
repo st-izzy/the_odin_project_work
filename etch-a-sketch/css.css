@@ -1,0 +1,84 @@
+body {
+    margin: 0px 20%;
+    padding: 0px;
+    background: rgb(255, 64, 64);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 0px;
+    gap: 24px;
+}
+
+#header {
+    color: rgb(255, 220, 64);
+    font-size: 32px;
+    font-family: "Style Script", cursive;
+    gap: 16px;
+}
+
+.panel {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+button.setting {
+    cursor: pointer;
+    background: #fdfeff;
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+    height: 128px;
+    width: 128px;
+    border-radius: 50%;
+}
+
+#sizeSlider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 400px;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+#sizeSlider:hover {
+    opacity: 1;
+}
+
+#sizeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #fdfeff;
+    cursor: pointer;
+}
+
+#sizeSlider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #fdfeff;
+    cursor: pointer;
+}
+
+#sizeReadout {
+    color: #fdfeff;
+    font-size: 24px;
+}
+
+#display {
+    background: #d3d3d3;
+    width: 700px;
+    height: 400px;
+}
