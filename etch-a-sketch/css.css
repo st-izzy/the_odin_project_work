@@ -20,7 +20,7 @@ body {
     color: rgb(255, 220, 64);
     font-size: 32px;
     font-family: "Style Script", cursive;
-    gap: 16px;
+    padding: 16px;
 }
 
 .panel {
