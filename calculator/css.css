@@ -69,6 +69,10 @@ body {
     border-radius: 10px;
 }
 
+.button:hover {
+    background: #efefefcc;
+}
+
 #btnAC {
     font-size: 48px;
 }
