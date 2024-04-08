@@ -61,7 +61,7 @@ const displayAppend = function(digit) {
 // calculation addition
 const calcAdd = function(numA, numB) {
     console.log("calcAdd " + numA + " " + numB + " " + (numA + numB));
-    return numA + numB;
+    return +numA + +numB;
 };
 calcAdd(1, 2)
 
@@ -129,6 +129,9 @@ const funcPlusMinus = function() {
 // btnPercent function
 const funcPercent = function() {
     displayValue = calcDivide(displayValue, 100);
+    if ( (operationQueue === "add") || (operationQueue === "subtract") ) {
+        displayValue = calcMultiply(numA, displayValue);
+    }
     displayRefresh();
     funcEqual();
 }
