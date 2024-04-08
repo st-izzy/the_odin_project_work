@@ -1,6 +1,8 @@
 // variables
 let numA = 0;
 let numB = 0;
+let numC = 0;
+let operationQueue = "none";
 let displayValue = 0;
 let displayReturn = false; // digit gets set as displayValue instead of appended when true
 
@@ -35,6 +37,10 @@ const displayRefresh = function() {
 
 // displayClear
 const displayClear = function() {
+    numA = 0;
+    numB = 0;
+    numC = 0;
+    operationQueue = "none";
     displayValue = 0;
     displayRefresh();
     console.log("displayClear");
@@ -75,21 +81,25 @@ calcMultiply(2, 4);
 
 // calculation division
 const calcDivide = function(numA, numB) {
-    console.log("calcDiv " + numA + " " + numB + " " + (numA / numB));
-    return numA / numB;
+    numC = numA / numB
+    if ( numC.toString().length > 9 ) {
+        numC = parseFloat( numC.toString().slice(0, 10) );
+    }
+    console.log("calcDiv " + numA + " " + numB + " " + numC);
+    return numC;
 }
 calcDivide(8, 4);
 
 // calculation plus or minus
 const calcPlusMinus = function(digits) {
-    let returnValue
+    numC = 0
     if ( digits > 0 ) {
-        returnValue = digits - (digits * 2);
+        numC = digits - (digits * 2);
     } else if ( digits < 0 ) {
-        returnValue = digits - (digits * 2); // JS doesn't minus * minus = positive
+        numC = digits - (digits * 2); // JS doesn't minus * minus = positive
     };
-    console.log("calcPoM " + digits + " " + returnValue);
-    return returnValue
+    console.log("calcPoM " + digits + " " + numC);
+    return numC;
 }
 calcPlusMinus(-2);
 
@@ -104,63 +114,156 @@ const calcEquals = function(operator, numA, numB) {
             return calcMultiply(numA, numB);
         case "divide":
             return calcDivide(numA, numB);
+        case "none":
+            return numA;
     }
 }
 
 
-// add button
-//const btnAddFunc = function() {
-//    displayValueHold = calcAdd();
-//    displayReturn = true;
-//    displayAppend(displayValueHold);
-//}
+// btnPlusMinus function
+const funcPlusMinus = function() {
+    displayValue = calcPlusMinus(displayValue);
+    displayRefresh();
+}
+
+// btnPercent function
+const funcPercent = function() {
+    displayValue = calcDivide(displayValue, 100);
+    displayRefresh();
+    funcEqual();
+}
+
+// btnDivide
+const funcDivide = function() {
+    displayReturn = true;
+    if ( !(operationQueue === "none") ) {
+        funcEqual();
+    };
+    numA = displayValue;
+    operationQueue = "divide";
+    console.log("funcDiv " + numA + " " + operationQueue)
+}
+
+// btnMultiply
+const funcMultiply = function() {
+    displayReturn = true;
+    if ( !(operationQueue === "none") ) {
+        funcEqual();
+    };
+    numA = displayValue;
+    operationQueue = "multiply";
+    console.log("funcMlt " + numA + " " + operationQueue)
+}
+
+// btnSubtract function
+const funcSubtract = function() {
+    displayReturn = true;
+    if ( !(operationQueue === "none") ) {
+        funcEqual();
+    };
+    numA = displayValue;
+    operationQueue = "subtract";
+    console.log("funcSub " + numA + " " + operationQueue)
+}
+
+// btnAdd function
+const funcAdd = function() {
+    displayReturn = true;
+    if ( !(operationQueue === "none") ) {
+        funcEqual();
+    };
+    numA = displayValue;
+    operationQueue = "add";
+    console.log("funcAdd " + numA + " " + operationQueue + " " + displayValue)
+    displayRefresh();
+};
+
+// btnEqual function
+const funcEqual = function() {
+    displayReturn = true;
+    numB = displayValue;
+    numC = numA;
+    numA = calcEquals(operationQueue, numA, numB);
+    displayValue = numA;
+    console.log("funcEqual " + numC + " " + operationQueue + " " + numB + " " + displayValue);
+    operationQueue = "none";
+    displayRefresh();
+}
 
 
-// button functions
-btnAC.addEventListener( "click", () => {
+// button behaviors
+btnAC.addEventListener( "click", () => { // all clear
     displayClear();
 });
 
-btnAdd.addEventListener( "click", () => {
-    btnAddFunc();
+btnPlusMinus.addEventListener( "click", () => { // plus or minus
+    funcPlusMinus();
+});
+
+btnPercent.addEventListener( "click", () => { // change to percent
+    funcPercent();
+});
+
+btnDivide.addEventListener( "click", () => {
+    funcDivide();
 })
 
-btnZero.addEventListener ( "click", () => {
+btnMultiply.addEventListener( "click", () => {
+    funcMultiply();
+})
+
+btnSubtract.addEventListener( "click", () => { // subtract button
+    funcSubtract();
+})
+
+btnAdd.addEventListener( "click", () => { // add button
+    funcAdd();
+})
+
+btnEqual.addEventListener( "click", () => { // equal button
+    funcEqual();
+})
+
+btnDecimal.addEventListener( "click", () => { // decimal button
+    displayAppend(`.`);
+})
+
+btnZero.addEventListener ( "click", () => { // num 0
     displayAppend(0);
 });
 
-btnOne.addEventListener( "click", () => {
+btnOne.addEventListener( "click", () => { // num 1
     displayAppend(1);
 });
 
-btnTwo.addEventListener( "click", () => {
+btnTwo.addEventListener( "click", () => { // num 2
     displayAppend(2);
 });
 
-btnThree.addEventListener( "click", () => {
+btnThree.addEventListener( "click", () => { // num 3
     displayAppend(3);
 });
 
-btnFour.addEventListener( "click", () => {
+btnFour.addEventListener( "click", () => { // num 4
     displayAppend(4);
 });
 
-btnFive.addEventListener( "click", () => {
+btnFive.addEventListener( "click", () => { // num 5
     displayAppend(5);
 });
 
-btnSix.addEventListener( "click", () => {
+btnSix.addEventListener( "click", () => { // num 6
     displayAppend(6);
 });
 
-btnSeven.addEventListener( "click", () => {
+btnSeven.addEventListener( "click", () => { // num 7
     displayAppend(7);
 });
 
-btnEight.addEventListener( "click", () => {
+btnEight.addEventListener( "click", () => { // num 8
     displayAppend(8);
 });
 
-btnNine.addEventListener( "click", () => {
+btnNine.addEventListener( "click", () => { // num 9
     displayAppend(9);
 });
